@@ -18,11 +18,16 @@ print ("2. Deposit")
 print ("3. Check balance")
 print ("4. Exit")
 choice = int(input())
+x = choice
 
 
 def exiter():
     print("Thank you for using our services")
     exit()
+
+
+
+
 
 
 def deposit(balance=b):
@@ -39,16 +44,9 @@ def deposit(balance=b):
         print("3. Check balance")
         print("4. Exit")
         choice1 = int(input())
-        if choice1 == 1:
-            withdraw()
-            if choice1 == 2:
-                deposit()
-                if choice1 == 3:
-                    check_balance()
-                    if choice1 == 4:
-                        exiter()
-                        if answer == "no":
-                            exiter()
+        main()
+        if answer == "no":
+            exiter()
 
 
 
@@ -69,16 +67,9 @@ def withdraw(balance=b):
         print("3. Check balance")
         print("4. Exit")
         choice2 = int(input())
-        if choice2 == 1:
-            withdraw()
-            if choice2 == 2:
-                deposit()
-                if choice2 == 3:
-                    check_balance()
-                    if choice2 == 4:
-                        exiter()
-                        if answer == "no":
-                            exiter()
+        x = choice2
+        if answer == "no":
+            exiter()
 
 
 def check_balance(balance=b):
@@ -92,16 +83,11 @@ def check_balance(balance=b):
         print("3. Check balance")
         print("4. Exit")
         choice3 = int(input())
-        if choice3 == 1:
-            withdraw()
-            if choice3 == 2:
-                deposit()
-                if choice3 == 3:
-                    check_balance()
-                    if choice3 == 4:
-                        exiter()
-                        if answer == "no":
-                            exiter()
+        x = choice3
+        if answer == "no":
+            exiter()
+
+
 
 
 def transfer(balance=b):
@@ -118,23 +104,22 @@ def transfer(balance=b):
         print("3. Check balance")
         print("4. Exit")
         choice4 = int(input())
-        if choice4 == 1:
-            withdraw()
-            if choice4 == 2:
-                deposit()
-                if choice4 == 3:
-                    check_balance()
-                    if choice4 == 4:
-                        exiter()
-                        if answer == "no":
-                            exiter()
+        x = choice4
+        main()
+        if answer == "no":
+            exiter()
 
 
-if choice == 1:
-    withdraw()
+
+
+def main(choice = x) :
+    if choice == 1:
+        withdraw()
     if choice == 2:
         deposit()
-        if choice == 3:
-            check_balance()
-            if choice == 4:
-                exiter()
+    if choice == 3:
+        check_balance()
+    if choice == 4:
+        exiter()
+
+main()
