@@ -1,3 +1,5 @@
+import time
+
 p = 0
 s = 0
 uid = 0
@@ -12,13 +14,6 @@ account_number = int(an)
 b = 1000
 
 print ("Welcome " + user_id)
-print ("What would you like to do?")
-print ("1. Withdraw")
-print ("2. Deposit")
-print ("3. Check balance")
-print ("4. Exit")
-choice = int(input())
-x = choice
 
 
 def exiter():
@@ -26,29 +21,14 @@ def exiter():
     exit()
 
 
-
-
-
-
 def deposit(balance=b):
     print("How much would you like to deposit?")
     deposit_amount = int(input())
     balance = balance + deposit_amount
+    time.sleep(1)
     print("Your new balance is " + str(balance))
-    print("Would you like to make another transaction?")
-    answer = input()
-    if answer == "yes":
-        print("What would you like to do?")
-        print("1. Withdraw")
-        print("2. Deposit")
-        print("3. Check balance")
-        print("4. Exit")
-        choice1 = int(input())
-        main()
-        if answer == "no":
-            exiter()
-
-
+    time.sleep(1)
+    asker()
 
 
 
@@ -57,35 +37,16 @@ def withdraw(balance=b):
     print("How much would you like to withdraw?")
     withdraw_amount = int(input())
     balance = balance - withdraw_amount
+    time.sleep(1)
     print("Your new balance is " + str(balance))
-    print("Would you like to make another transaction?")
-    answer = input()
-    if answer == "yes":
-        print("What would you like to do?")
-        print("1. Withdraw")
-        print("2. Deposit")
-        print("3. Check balance")
-        print("4. Exit")
-        choice2 = int(input())
-        x = choice2
-        if answer == "no":
-            exiter()
+    time.sleep(1)
+    asker()
 
 
 def check_balance(balance=b):
+    time.sleep(1)
     print("Your current balance is " + str(balance))
-    print("Would you like to make another transaction?")
-    answer = input()
-    if answer == "yes":
-        print("What would you like to do?")
-        print("1. Withdraw")
-        print("2. Deposit")
-        print("3. Check balance")
-        print("4. Exit")
-        choice3 = int(input())
-        x = choice3
-        if answer == "no":
-            exiter()
+    asker()
 
 
 
@@ -93,26 +54,38 @@ def check_balance(balance=b):
 def transfer(balance=b):
     print("How much would you like to transfer?")
     transfer_amount = int(input())
+    print("How would you like to transfer to?")
+    transfer_name = str(input())
     balance = balance - transfer_amount
+    time.sleep(1)
+    print("transfer to " + str(transfer_name) + " is complete")
+    time.sleep(.5)
     print("Your new balance is " + str(balance))
+    time.sleep(.5)
+    asker()
+
+
+
+def asker():
     print("Would you like to make another transaction?")
     answer = input()
     if answer == "yes":
-        print("What would you like to do?")
-        print("1. Withdraw")
-        print("2. Deposit")
-        print("3. Check balance")
-        print("4. Exit")
-        choice4 = int(input())
-        x = choice4
         main()
-        if answer == "no":
+    if answer == "no":
             exiter()
 
 
 
 
-def main(choice = x) :
+def main():
+
+    print("What would you like to do?")
+    print("1. Withdraw")
+    print("2. Deposit")
+    print("3. Check balance")
+    print("4. transfer")
+    print("5. Exit")
+    choice = int(input())
     if choice == 1:
         withdraw()
     if choice == 2:
@@ -120,6 +93,9 @@ def main(choice = x) :
     if choice == 3:
         check_balance()
     if choice == 4:
+        transfer()
+    if choice == 5:
         exiter()
+
 
 main()
