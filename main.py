@@ -1,3 +1,4 @@
+from lib2to3.pgen2.token import COMMENT
 import time
 import random
 
@@ -21,45 +22,43 @@ print("What is your password?")
 password = input()
 print ("Welcome " + account_number)
 
-
-
-
-
-def exiter():
-    print("Thank you for using our services")
-    exit()
-
-
-def deposit(balance=b):
-    print("How much would you like to deposit?")
-    deposit_amount = int(input())
-    balance = balance + deposit_amount
-    time.sleep(1)
-    print("Your new balance is " + str(balance))
-    time.sleep(1)
-    asker()
-
-
-
+#   1. Withdraw
 
 def withdraw(balance=b):
     print("How much would you like to withdraw?")
     withdraw_amount = int(input())
+    if int(withdraw_amount) > balance:
+        print("You do not have enough funds")
+        asker()
+
     balance = balance - withdraw_amount
     time.sleep(1)
     print("Your new balance is " + str(balance))
     time.sleep(1)
     asker()
 
+#   2. Deposit
 
+def deposit(balance=b):
+    print("How much would you like to deposit?")
+    deposit_amount = int(input())
+    if int(deposit_amount) < 0:
+        print("Please try again")
+        deposit()
+    balance = balance + deposit_amount
+    time.sleep(1)
+    print("Your new balance is " + str(balance))
+    time.sleep(1)
+    asker()
+
+#   3. Check balance
+ 
 def check_balance(balance=b):
     time.sleep(1)
     print("Your current balance is " + str(balance))
     asker()
 
-
-
-
+ #  4. transfer
 def transfer(balance=b):
     account_number = random.randint(100000000 , 999999999) 
     print("How much would you like to transfer?")
@@ -86,8 +85,6 @@ def transfer(balance=b):
    
 
 
-
-
 def asker():
     print("Would you like to make another transaction?")
     answer = input()
@@ -97,6 +94,9 @@ def asker():
             exiter()
 
 
+def exiter():
+    print("Thank you for using our services")
+    exit()
 
 
 def main():
