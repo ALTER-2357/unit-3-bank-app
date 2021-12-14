@@ -1,0 +1,82 @@
+import json
+
+
+open_file = open("account.json", "r")
+bank = json.loads(open_file.read())
+
+
+password1 = input("Enter your password: ")
+account_number1 = input("Enter your account number: ")
+
+
+
+
+if (bank["account_number"] == account_number1 and bank["password"] == password1):
+    print("Login Successful")
+    print("Balance:", bank["balance"])
+else:
+    print("Login Failed")
+
+
+
+def main():
+    open_file = open("account.json", "r")
+    
+    password1 = input("input password")
+    bank = json.loads(open_file.read())
+    account_number = 1
+    if "user" in bank:
+        if password1 == bank["password"] and account_number == bank["account_number"]:
+            print("Welcome back")
+            asker()
+            
+    else:
+        print("What would you like to do?")
+        print("1. try again")
+        print("2. create account")
+        print("3. exit")
+        choice = int(input())                                               #takes the user's choice
+        if choice == 1:                                                   
+            main()
+        if choice == 2:
+            create_account()
+        if choice == 5:
+            exiter()
+
+
+
+def create_account():
+    print("What is your name?")
+    name = input()
+    print("What is your address?")
+    address = input()
+    print("What is your email?")
+    email = input()
+    print("What is your password?")
+    password = input()
+    print("What is your sort code?")
+    sort_code = input()
+    print("What is your account number?")
+    account_number = input()
+    print("What is your balance?")
+    balance = input()
+    bank = {"name": name, "address": address, "email": email, "password": password, "sort_code": sort_code, "account_number": account_number, "balance": balance}
+    open_file = open("account.json", "w")
+    open_file.write(json.dumps(bank))
+    open_file.close()
+    print("Thank you for creating an account")
+    asker()
+
+
+
+def json_file():                                                 #creates a json file
+    import json
+    data = {
+        "account_number": account_number,
+        "password": password,
+        "balance": b
+    }
+    with open("account.json", "w") as f:
+        json.dump(data, f) 
+
+    
